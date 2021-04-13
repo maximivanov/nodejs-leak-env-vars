@@ -1,5 +1,9 @@
 exports.handler = async (event) => {
-  const body = JSON.parse(event.body)
+  let body = {}
+
+  if (event && event.body) {
+    body = JSON.parse(event.body)
+  }
 
   console.log('Got call home!', body)
 
