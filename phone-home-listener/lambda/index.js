@@ -1,11 +1,9 @@
 exports.handler = async (event) => {
-  let body = {}
-
-  if (event && event.body) {
-    body = JSON.parse(event.body)
-  }
-
-  console.log('Got call home!', body)
+  console.log('Got call home!', {
+    pathParameters: event.pathParameters,
+    queryStringParameters: event.queryStringParameters,
+    body: event.body,
+  })
 
   const response = {
     statusCode: 200,
