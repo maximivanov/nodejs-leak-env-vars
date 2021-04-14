@@ -1,0 +1,16 @@
+{
+  "name": "compromised-npm-package",
+  "version": "1.0.0",
+  "description": "POC of a vulnerable app leaking environment variables via a compromised NPM package",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "security",
+    "npm",
+    "compromised"
+  ],
+  "author": "Max Ivanov",
+  "license": "MIT"
+}
