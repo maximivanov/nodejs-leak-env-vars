@@ -43,3 +43,17 @@ resource "aws_lambda_function" "lambda_function" {
   runtime                 = "nodejs14.x"
   source_code_hash        = filebase64sha256(data.archive_file.lambda.output_path)
 }
+
+resource "aws_apigatewayv2_api" "apigatewayv2_api" {
+  name          = "${var.project}-apigatewayv2-api"
+  protocol_type = "HTTP"
+  target        = aws_lambda_function.lambda_function.arn
+}
+
+resource "aws_lambda_permission" "lambda_permission" {
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.lambda_function.arn
+  principal     = "apigateway.amazonaws.com"
+
+  source_arn = "${aws_apigatewayv2_api.apigatewayv2_api.execution_arn}/*/*"
+}

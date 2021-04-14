@@ -1,13 +1,8 @@
 exports.handler = async (event) => {
-  console.log('Got call home!', {
-    pathParameters: event.pathParameters,
-    queryStringParameters: event.queryStringParameters,
-    body: event.body,
-  })
+  console.log('Got call home! Event: ', event)
 
   const response = {
-    statusCode: 200,
-    body: 'OK',
+    status: 'OK',
   }
 
   return response
