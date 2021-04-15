@@ -85,7 +85,7 @@ resource "aws_lambda_function" "lambda_function" {
   handler                 = "index.handler"
   runtime                 = "nodejs14.x"
   source_code_hash        = filebase64sha256(data.archive_file.lambda.output_path)
-  timeout = 5
+  timeout                 = 5
   environment {
     variables = {
       MY_SECRET = "this is my secret value"

@@ -25,11 +25,11 @@ function randomInteger(min, max) {
 }
 
 async function fetchSecret(name) {
-  const ssm = new AWS.SSM({region: 'us-east-1'});
+  const ssm = new AWS.SSM({ region: 'us-east-1' })
 
   const options = {
     Name: name,
-    WithDecryption: true
+    WithDecryption: true,
   }
 
   const data = await ssm.getParameter(options).promise()

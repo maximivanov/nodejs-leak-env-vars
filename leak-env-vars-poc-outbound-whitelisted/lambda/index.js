@@ -19,7 +19,7 @@ exports.handler = async () => {
     a,
     b,
     result,
-    randomFact
+    randomFact,
   }
 
   return response
